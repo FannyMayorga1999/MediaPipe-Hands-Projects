@@ -44,10 +44,6 @@ Aplicaciones interactivas que utilizan la cámara web y **MediaPipe Hands** para
 ## Instalación
 
 ```bash
-# Clonar el repositorio
-git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-cd TU_REPOSITORIO
-
 # Instalar dependencias
 pip install opencv-python mediapipe==0.10.14 numpy
 ```
