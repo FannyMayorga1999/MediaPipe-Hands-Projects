@@ -1,6 +1,6 @@
-# Control por Gestos — Plantas y Puzzles
+# Control por Gestos — Plantas, Puzzles y Luces
 
-Aplicaciones interactivas que utilizan la cámara web y **MediaPipe Hands** para detectar gestos de la mano en tiempo real. Incluye una planta virtual que crece con los dedos y tres versiones de un puzzle de 3×3 controlado por gestos.
+Aplicaciones interactivas que utilizan la cámara web y **MediaPipe Hands** para detectar gestos de la mano en tiempo real. Incluye una planta virtual que crece con los dedos, tres versiones de un puzzle de 3×3 controlado por gestos, y un panel de luces virtuales que se encienden según el dedo levantado.
 
 ---
 
@@ -27,6 +27,22 @@ Aplicaciones interactivas que utilizan la cámara web y **MediaPipe Hands** para
 - Similar a V2 pero usa gesto de pinza (pellizco)
 - Cerrar pinza → agarrar pieza
 - Abrir pinza → soltar pieza
+
+### 5. Luz por Dedo
+**Archivo:** `luz_por_dedo.ipynb`
+- Cada dedo levantado enciende una luz virtual de color:
+  - **Pulgar** → BLANCA
+  - **Índice** → ROJA
+  - **Medio** → VERDE
+  - **Anular** → AZUL
+  - **Meñique** → AMARILLA
+- Detecta los 5 dedos individualmente usando MediaPipe Hands
+- Ideal para demostrar mapeo de señales digitales (Álgebra Lineal)
+
+### 6. Fotos según Número de Dedos
+**Archivo:** `fotos_por_dedos.ipynb`
+- Toma una foto automática al mostrar 0–5 dedos durante ~2 segundos
+- Guarda las imágenes en `fotos_capturadas/` con timestamp
 
 ---
 
@@ -57,18 +73,18 @@ pip install opencv-python mediapipe==0.10.14 numpy
 Abre el notebook en Jupyter:
 
 ```bash
-jupyter notebook "flores y mano.ipynb"
+jupyter notebook "luz_por_dedo.ipynb"
 ```
 
 Ejecuta la celda del programa que quieras usar.
 
 ### Controles comunes
-| Tecla  | Acción              |
-|--------|---------------------|
-| `ESC`  | Salir del programa  |
-| `X`    | Cerrar ventana      |
-| `ESPACIO` | Tomar foto (V2, V3) |
-| `R`    | Reiniciar (V2, V3)  |
+| Tecla     | Acción                           |
+|-----------|----------------------------------|
+| `ESC`     | Salir del programa               |
+| `X`       | Cerrar ventana                   |
+| `ESPACIO` | Tomar foto (Puzzle V2, V3)       |
+| `R`       | Reiniciar (Puzzle V2, V3)        |
 
 ---
 
@@ -76,7 +92,11 @@ Ejecuta la celda del programa que quieras usar.
 
 ```
 python/
-├── flores y mano.ipynb   # Notebook principal (4 programas)
-├── README.md             # Este archivo
-└── .gitignore            # Archivos ignorados
+├── flores y mano.ipynb      # Notebook principal (4 programas)
+├── fotos_por_dedos.ipynb    # Captura de fotos según cantidad de dedos
+├── luz_por_dedo.ipynb       # Luces virtuales por cada dedo
+├── puzzle_gestos_mano.ipynb # Puzzle con gestos (3 versiones)
+├── fotos_capturadas/        # Fotos tomadas por fotos_por_dedos.ipynb
+├── README.md                # Este archivo
+└── .gitignore               # Archivos ignorados
 ```
