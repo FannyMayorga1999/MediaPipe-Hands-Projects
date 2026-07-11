@@ -1,6 +1,6 @@
-# Control por Gestos — Plantas, Puzzles y Luces
+# Control por Gestos — Plantas, Puzzles, Luces y Matrix
 
-Aplicaciones interactivas que utilizan la cámara web y **MediaPipe Hands** para detectar gestos de la mano en tiempo real. Incluye una planta virtual que crece con los dedos, tres versiones de un puzzle de 3×3 controlado por gestos, y un panel de luces virtuales que se encienden según el dedo levantado.
+Aplicaciones interactivas que utilizan la cámara web y **MediaPipe Hands** para detectar gestos de la mano en tiempo real. Incluye una planta virtual que crece con los dedos, tres versiones de un puzzle de 3×3 controlado por gestos, un panel de luces virtuales, y dos interfaces estilo The Matrix para control y hackeo.
 
 ---
 
@@ -43,6 +43,32 @@ Aplicaciones interactivas que utilizan la cámara web y **MediaPipe Hands** para
 **Archivo:** `fotos_por_dedos.ipynb`
 - Toma una foto automática al mostrar 0–5 dedos durante ~2 segundos
 - Guarda las imágenes en `fotos_capturadas/` con timestamp
+
+### 7. Interface Matrix — UNIBE
+**Archivo:** `cyberpunk_interface.ipynb`
+- Interfaz estilo The Matrix con 5 canales UNIBE
+- Cada dedo levantado activa un nodo con lluvia de caracteres cayendo
+- Mapeo de dedos a letras:
+  - **Pulgar** → U
+  - **Índice** → N
+  - **Medio** → I
+  - **Anular** → B
+  - **Meñique** → E
+- Efecto visual cyberpunk con nodos brillantes y conexiones entre dedos activos
+- Barra de estado inferior muestra nodos activos
+
+### 8. Simulador de Hackeo — Interface Matrix
+**Archivo:** `puzzcle_letras.ipynb`
+- Juego interactivo inspirado en The Matrix
+- Captura letras objetivo usando gesto de pinza (pulgar + índice)
+- Lluvia de caracteres estilo Matrix
+- 3 niveles de dificultad:
+  1. UNIBE
+  2. UNIVERSIDAD
+  3. INGENIERIA
+- Cronómetro por nivel y ranking de mejores tiempos
+- Pausa con mano abierta
+- Botones virtuales (INICIAR, NUEVO JUEGO, SALIR) con gesto de pinza
 
 ---
 
@@ -92,11 +118,13 @@ Ejecuta la celda del programa que quieras usar.
 
 ```
 python/
-├── flores y mano.ipynb      # Notebook principal (4 programas)
-├── fotos_por_dedos.ipynb    # Captura de fotos según cantidad de dedos
-├── luz_por_dedo.ipynb       # Luces virtuales por cada dedo
-├── puzzle_gestos_mano.ipynb # Puzzle con gestos (3 versiones)
-├── fotos_capturadas/        # Fotos tomadas por fotos_por_dedos.ipynb
-├── README.md                # Este archivo
-└── .gitignore               # Archivos ignorados
+├── cyberpunk_interface.ipynb  # Interface Matrix UNIBE (nodos por dedo)
+├── flores y mano.ipynb        # Planta virtual interactiva
+├── fotos_por_dedos.ipynb      # Captura de fotos según cantidad de dedos
+├── luz_por_dedo.ipynb         # Luces virtuales por cada dedo
+├── puzzle_gestos_mano.ipynb   # Puzzle con gestos (3 versiones)
+├── puzzcle_letras.ipynb       # Puzzle de letras
+├── fotos_capturadas/          # Fotos tomadas por fotos_por_dedos.ipynb
+├── README.md                  # Este archivo
+└── .gitignore                 # Archivos ignorados
 ```
