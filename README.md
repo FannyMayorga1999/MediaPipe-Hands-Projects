@@ -70,27 +70,51 @@ Aplicaciones interactivas que utilizan la cámara web y **MediaPipe Hands** para
 - Pausa con mano abierta
 - Botones virtuales (INICIAR, NUEVO JUEGO, SALIR) con gesto de pinza
 
+### 9. Detector de Sueño
+**Archivo:** `teachablemachine.ipynb`, **Utilidades:** `sueno_utils.py`
+- Detecta ojos cerrados en tiempo real usando un modelo de Teachable Machine
+- **3 clases del modelo:** `ojos_abierto`, `ojos_cerrados`, `fondo`
+- **Alertas cuando detecta sueño:**
+  - Notificación de escritorio (plyer)
+  - Voz en loop con pyttsx3: "¡No te duermas! ¡Abre los ojos!"
+  - El audio se repite mientras los ojos estén cerrados y se detiene al abrirlos
+- **Cierre:** con `Q` o con la `X` de la ventana
+- **Configuración:**
+  - `CONFIAZA_MINIMA = 0.75` — confianza mínima para considerar ojos cerrados
+  - `FRAMES_OJOS_CERRADOS = 15` — frames seguidos necesarios para activar alerta
+- Usa `tf_keras` (keras v2 legacy) por compatibilidad con modelos de TM en TF 2.21
+- Manejo de rutas con caracteres Unicode (copia a temp si es necesario)
+
 ---
 
 ## Requisitos
 
-| Dependencia  | Versión  |
-|-------------|----------|
-| Python      | 3.12.10  |
-| OpenCV      | 5.0.0    |
-| MediaPipe   | 0.10.14  |
-| NumPy       | 2.5.0    |
+| Dependencia   | Versión  |
+|--------------|----------|
+| Python       | 3.12.10  |
+| OpenCV       | 5.0.0    |
+| MediaPipe    | 0.10.14  |
+| NumPy        | 2.5.0    |
+| TensorFlow   | 2.21.0   |
+| tf-keras     | 2.15.0   |
+| pyttsx3      | 2.99     |
+| plyer        | 2.1.0    |
+| Pillow       | 11.0.0   |
 
 ---
 
 ## Instalación
 
 ```bash
-# Instalar dependencias
+# Para los programas de gestos (MediaPipe)
 pip install opencv-python mediapipe==0.10.14 numpy
+
+# Para el detector de sueño (Teachable Machine)
+pip install tensorflow tf-keras pyttsx3 pillow plyer
 ```
 
 > **Nota:** MediaPipe 0.10.14 es la versión recomendada para compatibilidad.
+> Para el detector de sueño se necesita `tf-keras` por compatibilidad con modelos de TM en TF 2.21.
 
 ---
 
@@ -124,7 +148,13 @@ python/
 ├── luz_por_dedo.ipynb         # Luces virtuales por cada dedo
 ├── puzzle_gestos_mano.ipynb   # Puzzle con gestos (3 versiones)
 ├── puzzcle_letras.ipynb       # Puzzle de letras
+├── teachablemachine.ipynb     # Detector de sueño (Teachable Machine)
+├── sueno_utils.py             # Utilidades del detector de sueño
 ├── fotos_capturadas/          # Fotos tomadas por fotos_por_dedos.ipynb
+├── modelos_teachablemachine/  # Modelo de Teachable Machine
+│   └── converted_keras/
+│       ├── keras_model.h5     # Modelo entrenado
+│       └── labels.txt         # Clases: ojos_abierto, ojos_cerrados, fondo
 ├── README.md                  # Este archivo
 └── .gitignore                 # Archivos ignorados
 ```

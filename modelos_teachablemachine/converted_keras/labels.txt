@@ -1,0 +1,3 @@
+0 fondo
+1 ojos_abiertos
+2 ojos_cerrados
